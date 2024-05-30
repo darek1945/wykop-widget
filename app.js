@@ -1,14 +1,13 @@
-const articlesList = document.getElementById('articles-list');
-const microblogList = document.getElementById('microblog-list');
+const proxyUrl = 'http://localhost:8080';
 
 async function fetchArticles() {
-    const response = await fetch('https://api.wykop.pl/articles/latest'); // Replace with actual endpoint
+    const response = await fetch(`${proxyUrl}/api/articles/latest`);
     const articles = await response.json();
     articlesList.innerHTML = articles.map(article => `<li>${article.title}</li>`).join('');
 }
 
 async function fetchMicroblogPosts() {
-    const response = await fetch('https://api.wykop.pl/microblog/latest'); // Replace with actual endpoint
+    const response = await fetch(`${proxyUrl}/api/microblog/latest`);
     const posts = await response.json();
     microblogList.innerHTML = posts.map(post => `<li>${post.content}</li>`).join('');
 }
