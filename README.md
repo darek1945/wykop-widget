@@ -43,13 +43,13 @@ This command will build the Docker image and start the Nginx proxy server on por
     const proxyUrl = 'http://localhost:8080';
 
     async function fetchArticles() {
-        const response = await fetch(`${proxyUrl}/api/articles/latest`);
+        const response = await fetch(`${proxyUrl}/api/v3.0/articles/latest`);
         const articles = await response.json();
         articlesList.innerHTML = articles.map(article => `<li>${article.title}</li>`).join('');
     }
 
     async function fetchMicroblogPosts() {
-        const response = await fetch(`${proxyUrl}/api/microblog/latest`);
+        const response = await fetch(`${proxyUrl}/api/v3.0/microblog/latest`);
         const posts = await response.json();
         microblogList.innerHTML = posts.map(post => `<li>${post.content}</li>`).join('');
     }
